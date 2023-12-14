@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "439923090323",
+    "project_id": "proiectbd-633c4",
+    "storage_bucket": "proiectbd-633c4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:439923090323:android:2f4ca37d030cfe04947e66",
+        "android_client_info": {
+          "package_name": "com.example.zoobrasov"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfozE9HARZb1sqDu5fR-QrVhBH-QoiAiw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
