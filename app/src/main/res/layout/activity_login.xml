@@ -31,6 +31,7 @@
         android:id="@+id/email"
         android:hint="@string/email"
         android:layout_width="match_parent"
+        android:textColor="@color/culoareScris"
         android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -56,4 +57,14 @@
         android:text="@string/login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+    <TextView
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp"
+        android:id="@+id/registerNow"
+        android:text="@string/click_to_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
 </LinearLayout>
