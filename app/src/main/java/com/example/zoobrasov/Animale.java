@@ -1232,7 +1232,6 @@ public class Animale extends AppCompatActivity implements BottomNavigationView.O
         });
     }
 
-
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         int id = item.getItemId();
