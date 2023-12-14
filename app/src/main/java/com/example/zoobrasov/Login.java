@@ -10,12 +10,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class Login extends AppCompatActivity {
 
     TextInputEditText emailBox,passwordBox;
     Button loginButton;
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,16 +29,13 @@ public class Login extends AppCompatActivity {
         emailBox=findViewById(R.id.email);
         passwordBox=findViewById(R.id.password);
         loginButton=findViewById(R.id.btn_login);
-
-        FireBaseAuth mAuth;
-
         loginButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 String email,password;
                 email= String.valueOf(emailBox.getText());
                 password= String.valueOf(passwordBox.getText());
-                mAuth=FireBaseAuth.getInstace();
+                mAuth=FirebaseAuth.getInstance();
 
                 if(TextUtils.isEmpty(email)){
                     Toast.makeText(Login.this,"Enter email",Toast.LENGTH_LONG).show();
