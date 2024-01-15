@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "465370712494",
+    "project_id": "proiectbd-5de05",
+    "storage_bucket": "proiectbd-5de05.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:465370712494:android:e60a1c2551eb856ce5603f",
+        "android_client_info": {
+          "package_name": "com.example.zoobrasov"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVp5m8twdTjQrEllgygKy7E5Ed3QXP1Eo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:465370712494:android:6bb78f85ce493597e5603f",
+        "android_client_info": {
+          "package_name": "com.zooBrasov"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVp5m8twdTjQrEllgygKy7E5Ed3QXP1Eo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

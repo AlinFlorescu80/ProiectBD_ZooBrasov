@@ -8,4 +8,10 @@
     <string name="Program1">ORAR 1 martie - 30 septembrie\n\nLuni - inchis\n\nMarti - 09:00 - 19:00\n\nMiercuri - 09:00 - 19:00\n\nJoi - 09:00 - 19:00\n\nVineri - 09:00 - 19:00\n\nSâmbată - 09:00 - 19:00\n\nDuminică - 09:00 - 19:00</string>
     <string name="CategoriiDePersoane">Adulti - 20 lei\n\nCopii peste 2 ani - 10 lei\n\nElevi - 10 lei\n\nStudenti - 10 lei\n\nPersoane în vârstă - 10 lei\n\nCopii 0 - 2 ani - intrare gratuită\n\nGrupuri organizate adulti - 17 lei\n\nGrupuri organizate copii - 7 lei</string>
     <string name="ntrebari_5">Întrebari: 5</string>
+    <string name="register">Register</string>
+    <string name="click_to_login">Click to login</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="click_to_register">Click to register</string>
 </resources>
