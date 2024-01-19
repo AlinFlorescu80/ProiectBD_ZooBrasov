@@ -14,4 +14,5 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="click_to_register">Click to register</string>
+    <string name="passwordLogin">Password</string>
 </resources>
