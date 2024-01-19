@@ -1,5 +1,7 @@
 package com.example.zoobrasov;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -8,6 +10,7 @@ import android.animation.LayoutTransition;
 import android.os.Bundle;
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
@@ -17,6 +20,12 @@ import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 public class Animale extends AppCompatActivity implements BottomNavigationView.OnItemSelectedListener {
 
@@ -253,6 +262,29 @@ public class Animale extends AppCompatActivity implements BottomNavigationView.O
         arrow = findViewById(R.id.arrow_button);
         hiddenView = findViewById(R.id.hidden_view);
         hiddenView.getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
+        // Take animal data from database
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("animals");
+
+        ValueEventListener postListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Get Post object and use the values to update the UI
+                AnimalHelperClass post = dataSnapshot.getValue(AnimalHelperClass.class);
+                // ..
+               // System.out.println(post.arealSiHabitat);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+            }
+        };
+
+        reference.addValueEventListener(postListener);
+
+
 
         arrow.setOnClickListener(view -> {
 
