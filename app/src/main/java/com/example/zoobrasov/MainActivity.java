@@ -57,11 +57,9 @@ public class MainActivity extends AppCompatActivity {
         logIn = findViewById(R.id.login);
 
         gso=new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
-        gsc = GoogleSignIn.getClient(logIn.getContext(),gso);
+        gsc = GoogleSignIn.getClient(this,gso);
 
         logOut = findViewById(R.id.logout);
-
-
 
         logIn.setOnClickListener(view -> logIn());
 
@@ -72,6 +70,10 @@ public class MainActivity extends AppCompatActivity {
             logIn.setText(personName);
         }
 
+        if (!logIn.getText().toString().equals("LOG IN"))
+            logOut.setVisibility(View.VISIBLE);
+        else
+            logOut.setVisibility(View.INVISIBLE);
 
         logOut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,12 +82,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        /*
-        if (!logIn.getText().toString().equals("Log in"))
-            logOut.setVisibility(View.VISIBLE);
-        else
-            logOut.setVisibility(View.INVISIBLE);
-*/
+
+
 
 
         Button mailButton = findViewById(R.id.mail_button);
