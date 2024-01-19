@@ -6,7 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.text.TextUtils;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,13 +17,15 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Login extends AppCompatActivity {
 
-    EditText emailBox,passwordBox;
+    EditText emailBox, passwordBox;
     Button loginButton;
     FirebaseAuth mAuth;
     TextView textView;
@@ -35,6 +39,10 @@ public class Login extends AppCompatActivity {
         loginButton=findViewById(R.id.login_button);
 
         textView = findViewById(R.id.signUpRedirectText);
+
+        passwordBox.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        passwordBox.setTransformationMethod(PasswordTransformationMethod.getInstance());
+
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

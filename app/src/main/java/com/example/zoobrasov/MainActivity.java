@@ -61,8 +61,6 @@ public class MainActivity extends AppCompatActivity {
 
         logOut = findViewById(R.id.logout);
 
-
-
         logIn.setOnClickListener(view -> logIn());
 
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
@@ -72,6 +70,11 @@ public class MainActivity extends AppCompatActivity {
             logIn.setText(personName);
         }
 
+        if (!logIn.getText().toString().equals("LOG IN"))
+            logOut.setVisibility(View.VISIBLE);
+        else
+            logOut.setVisibility(View.INVISIBLE);
+
         logOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -79,10 +82,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        if (!logIn.getText().toString().equals("Log in"))
-            logOut.setVisibility(View.VISIBLE);
-        else
-            logOut.setVisibility(View.INVISIBLE);
+
 
 
 
@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 finish();
-                startActivity(new Intent(MainActivity.this, MainActivity.class));
+                startActivity(new Intent(MainActivity.this, Login.class));
             }
         });
     }
