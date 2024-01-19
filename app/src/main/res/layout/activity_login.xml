@@ -63,8 +63,8 @@
                 android:background="@drawable/login_border"
                 android:layout_marginTop="40dp"
                 android:padding="8dp"
-                android:hint="Email"
-                android:drawableLeft="@drawable/ic_baseline_email_24"
+                android:hint="Username"
+                android:drawableLeft="@drawable/ic_baseline_person_pin_24"
                 android:drawablePadding="8dp"
                 android:textColor="@color/white"/>
 

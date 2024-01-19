@@ -58,12 +58,36 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:id="@+id/register_email"
+                android:id="@+id/register_name"
                 android:background="@drawable/login_border"
                 android:layout_marginTop="40dp"
                 android:padding="8dp"
+                android:hint="Name"
+                android:drawableLeft="@drawable/ic_baseline_person_24"
+                android:drawablePadding="8dp"
+                android:textColor="@color/white"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/register_email"
+                android:background="@drawable/login_border"
+                android:layout_marginTop="25dp"
+                android:padding="8dp"
                 android:hint="Email"
                 android:drawableLeft="@drawable/ic_baseline_email_24"
+                android:drawablePadding="8dp"
+                android:textColor="@color/white"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/register_username"
+                android:background="@drawable/login_border"
+                android:layout_marginTop="25dp"
+                android:padding="8dp"
+                android:hint="User name"
+                android:drawableLeft="@drawable/ic_baseline_person_pin_24"
                 android:drawablePadding="8dp"
                 android:textColor="@color/white"/>
 

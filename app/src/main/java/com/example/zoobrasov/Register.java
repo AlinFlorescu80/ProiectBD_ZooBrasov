@@ -16,18 +16,21 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.auth.AuthResult;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.provider.FirebaseInitProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 
 public class Register extends AppCompatActivity {
     FirebaseAuth mAuth;
     ProgressBar progressBar;
     TextView textView;
-    EditText editTextEmail, editTextPassword;
+    EditText editTextEmail,editTextUserName,editTextName, editTextPassword;
     Button buttonReg;
+    FirebaseDatabase database;
+    DatabaseReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,8 @@ public class Register extends AppCompatActivity {
         mAuth= FirebaseAuth.getInstance();
         editTextEmail = findViewById(R.id.register_email);
         editTextPassword = findViewById(R.id.register_password);
+        editTextName=findViewById(R.id.register_name);
+        editTextUserName=findViewById(R.id.register_username);
         buttonReg = findViewById(R.id.register_button);
         progressBar = findViewById(R.id.progressBar);
         textView = findViewById(R.id.loginRedirectText);
@@ -52,35 +57,22 @@ public class Register extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 progressBar.setVisibility(View.VISIBLE);
-                String email, password;
-                email = String.valueOf(editTextEmail.getText());
-                password = String.valueOf(editTextPassword.getText());
+                FirebaseInitProvider.isCurrentlyInitializing();
+                FirebaseApp app=FirebaseApp.initializeApp(Register.this);
+                database=FirebaseDatabase.getInstance();
+                reference=database.getReference("users");
 
-                if (TextUtils.isEmpty(email)) {
-                    Toast.makeText(Register.this, "Enter email", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if (TextUtils.isEmpty(password)) {
-                    Toast.makeText(Register.this, "Enter password", Toast.LENGTH_SHORT).show();
-                    return;
-                }
+                String name=editTextName.getText().toString();
+                String email=editTextEmail.getText().toString();
+                String username=editTextUserName.getText().toString();
+                String password=editTextPassword.getText().toString();
 
-                mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        progressBar.setVisibility(View.GONE);
-                        if (task.isSuccessful()) {
+                HelperClass helperClass=new HelperClass(name,email,username,password);
+                reference.child(name).setValue(helperClass);
 
-                            Toast.makeText(Register.this, "Account created",
-                                    Toast.LENGTH_SHORT).show();
-
-                        } else {
-                            Toast.makeText(Register.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-
-                        }
-                    }
-                });
+                Toast.makeText(Register.this,"You have signup successful!", Toast.LENGTH_LONG).show();
+                Intent intent =new Intent(Register.this, Login.class);
+                startActivity(intent);
             }
         });
     }

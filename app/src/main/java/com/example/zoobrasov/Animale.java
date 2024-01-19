@@ -20,6 +20,7 @@ import com.google.android.material.navigation.NavigationBarView;
 
 public class Animale extends AppCompatActivity implements BottomNavigationView.OnItemSelectedListener {
 
+
     ImageButton arrow;
     LinearLayout hiddenView;
     CardView cardView;
