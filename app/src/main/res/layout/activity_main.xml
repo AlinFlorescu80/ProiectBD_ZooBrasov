@@ -145,16 +145,6 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <Button
-            android:id="@+id/login"
-            style="@style/Widget.AppCompat.Button.Borderless.Colored"
-            android:layout_width="wrap_content"
-            android:layout_height="35dp"
-            android:text="Log in"
-            android:textColor="#0097A7"
-            android:textSize="12sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/logout"

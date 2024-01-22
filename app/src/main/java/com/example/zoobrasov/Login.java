@@ -1,6 +1,7 @@
 package com.example.zoobrasov;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -15,6 +16,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
@@ -36,7 +42,9 @@ public class Login extends AppCompatActivity {
     EditText emailBox, passwordBox;
     Button loginButton;
     FirebaseAuth mAuth;
-    TextView textView;
+    TextView textView,loginWithGoogleTW;
+    GoogleSignInOptions gso;
+    GoogleSignInClient gsc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +53,11 @@ public class Login extends AppCompatActivity {
         emailBox=findViewById(R.id.login_email);
         passwordBox=findViewById(R.id.login_password);
         loginButton=findViewById(R.id.login_button);
+        gso=new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
+        gsc = GoogleSignIn.getClient(this,gso);
 
         textView = findViewById(R.id.signUpRedirectText);
+        loginWithGoogleTW=findViewById(R.id.loginWithGoogle);
 
         passwordBox.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
         passwordBox.setTransformationMethod(PasswordTransformationMethod.getInstance());
@@ -59,6 +70,8 @@ public class Login extends AppCompatActivity {
                 finish();
             }
         });
+
+        loginWithGoogleTW.setOnClickListener(view->loginWithGoogle());
 
         loginButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -73,6 +86,34 @@ public class Login extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void loginWithGoogle() {
+        Intent signInIntent = gsc.getSignInIntent();
+        startActivityForResult(signInIntent, 1000);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 1000)
+        {
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            try {
+                task.getResult(ApiException.class);
+                NavigateBack();
+
+
+            } catch (ApiException e) {
+                Toast.makeText(getApplicationContext(), "Eroare la conectare cu contul Google", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    void NavigateBack(){
+        finish();
+        Intent intent = new Intent(Login.this, MainActivity.class);
+        startActivity(intent);
     }
 
     public Boolean validateUserName()

@@ -54,26 +54,26 @@ public class MainActivity extends AppCompatActivity {
         button3 = findViewById(R.id.button4);
         button3.setOnClickListener(v -> openActivity5());
 
-        logIn = findViewById(R.id.login);
+        //logIn = findViewById(R.id.login);
 
         gso=new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         gsc = GoogleSignIn.getClient(this,gso);
 
         logOut = findViewById(R.id.logout);
 
-        logIn.setOnClickListener(view -> logIn());
+      //  logIn.setOnClickListener(view -> logIn());
 
-        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
-        if(acct!=null)
-        {
-            String personName = "Welcome, "+ acct.getDisplayName();
-            logIn.setText(personName);
-        }
-
-        if (!logIn.getText().toString().equals("LOG IN"))
-            logOut.setVisibility(View.VISIBLE);
-        else
-            logOut.setVisibility(View.INVISIBLE);
+//        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
+//        if(acct!=null)
+//        {
+//            String personName = "Welcome, "+ acct.getDisplayName();
+//            logIn.setText(personName);
+//        }
+//
+//        if (!logIn.getText().toString().equals("LOG IN"))
+//            logOut.setVisibility(View.VISIBLE);
+//        else
+//            logOut.setVisibility(View.INVISIBLE);
 
         logOut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,35 +121,35 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    void logIn()
-    {
-        Intent signInIntent = gsc.getSignInIntent();
-        startActivityForResult(signInIntent, 1000);
-    }
-
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == 1000)
-        {
-            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            try {
-                task.getResult(ApiException.class);
-                NavigateBack();
-
-
-            } catch (ApiException e) {
-                Toast.makeText(getApplicationContext(), "Eroare șefule", Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
-
-    void NavigateBack(){
-        finish();
-        Intent intent = new Intent(MainActivity.this, MainActivity.class);
-        startActivity(intent);
-    }
+//    void logIn()
+//    {
+//        Intent signInIntent = gsc.getSignInIntent();
+//        startActivityForResult(signInIntent, 1000);
+//    }
+//
+//
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if(requestCode == 1000)
+//        {
+//            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+//            try {
+//                task.getResult(ApiException.class);
+//                NavigateBack();
+//
+//
+//            } catch (ApiException e) {
+//                Toast.makeText(getApplicationContext(), "Eroare șefule", Toast.LENGTH_SHORT).show();
+//            }
+//        }
+//    }
+//
+//    void NavigateBack(){
+//        finish();
+//        Intent intent = new Intent(MainActivity.this, MainActivity.class);
+//        startActivity(intent);
+//    }
 
 
 
